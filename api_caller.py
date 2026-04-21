@@ -31,7 +31,7 @@ class ollama_api:
             return f"Chyba: {e}"
 
 
-# 👇 CLI režim (spuštění ze souboru)
+
 if __name__ == "__main__":
     api = ollama_api(
         url="https://kurim.ithope.eu/v1/",
