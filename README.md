@@ -1,10 +1,10 @@
-Projekt: Florbal chatbot
+Projekt: Chatbot, který pomáhá se začátky s florbalem
 
-Spuštění:
-docker compose up --build
+Jak chatbot funguje? Úplně jednoduše; napíšeme dotaz do okénka na stránce, stisknete "Odeslat". Hned na to se dotaz odešle na AI na internetu (Gemma3:27b), ta odpoví a odpověď se zobrazí na stránce. Následná konverzace se ukládá do databáze.
 
-Port:
-8081
+Spuštění: docker compose up --build
+
+Port: 8081
 
 Endpointy:
 GET /ping
@@ -12,8 +12,6 @@ GET /status
 GET /save
 POST /ai
 
-Databáze:
-PostgreSQL
+Databáze: PostgreSQL, ukládá dotaz a odpověď
 
-Test:
-http://localhost:8081/ping
+Test lze na URL http://localhost:8081/ping
