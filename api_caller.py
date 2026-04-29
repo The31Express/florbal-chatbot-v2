@@ -16,7 +16,7 @@ class ollama_api:
                 },
                 json={
                     "model": "gemma3:27b",
-                    "prompt": [
+                    "messages": [
                         {"role": "user", "content": question}
                     ]
                 }
@@ -34,7 +34,7 @@ class ollama_api:
 
 if __name__ == "__main__":
     api = ollama_api(
-        url="https://kurim.ithope.eu/v1/",
+        url="https://kurim.ithope.eu/chat/completions",
         key="sk-JgGoX7z7SYHhIaxAYc7gkg"
     )
 
