@@ -1,6 +1,5 @@
 import requests
 
-
 class ollama_api:
     def __init__(self, url: str, key: str):
         self.url = url
@@ -29,22 +28,3 @@ class ollama_api:
 
         except Exception as e:
             return f"Chyba: {e}"
-
-
-
-if __name__ == "__main__":
-    api = ollama_api(
-        url="https://kurim.ithope.eu/chat/completions",
-        key="sk-JgGoX7z7SYHhIaxAYc7gkg"
-    )
-
-    print("Chatbot (napiš 'exit' pro ukončení)\n")
-
-    while True:
-        question = input("Ty: ")
-
-        if question.lower() == "exit":
-            break
-
-        answer = api.query(question)
-        print("Bot:", answer)
