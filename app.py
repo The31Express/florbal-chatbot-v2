@@ -12,12 +12,14 @@ def read_api_key():
         if kv[0] == "OPENAI_API_KEY":
             return kv[1]
 
-try:
-    file = open(".env", "r")
-    text = file.read()
-except:
-    text = "Nastala Chyba"
-text = "\n\n" + text
+def read_file_to_string(path):
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception as e:
+        return f"Error reading '{path}': {e}"
+
+text = "\n\n"+read_file_to_string(".env")
 
 API_KEY = "sk-JgGoX7z7SYHhIaxAYc7gkg"#read_api_key()
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
