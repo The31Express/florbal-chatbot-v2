@@ -3,9 +3,9 @@ import psycopg2
 import os
 import api_caller
 
-key_file = open("api_key.txt", "r")
+#key_file = open("api_key.txt", "r")
 
-API_KEY = key_file.read()
+API_KEY = "sk-JgGoX7z7SYHhIaxAYc7gkg"#key_file.read()
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
 
 ollama = api_caller.ollama_api(BASE_URL, API_KEY)
