@@ -15,7 +15,7 @@ def read_api_key():
 try:
     key = read_api_key()
 except:
-    key = sk-JgGoX7z7SYHhIaxAYc7gkg
+    key = "sk-JgGoX7z7SYHhIaxAYc7gkg"
 
 API_KEY = key
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
