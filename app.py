@@ -12,12 +12,7 @@ def read_api_key():
         if kv[0] == "OPENAI_API_KEY":
             return kv[1]
 
-try:
-    key = read_api_key()
-except:
-    key = "sk-JgGoX7z7SYHhIaxAYc7gkg"
-
-API_KEY = key
+API_KEY = read_api_key()
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
 
 ollama = api_caller.ollama_api(BASE_URL, API_KEY)
