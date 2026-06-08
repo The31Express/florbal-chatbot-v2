@@ -12,15 +12,6 @@ def read_api_key():
         if kv[0] == "OPENAI_API_KEY":
             return kv[1]
 
-def read_file_to_string(path):
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return f.read()
-    except Exception as e:
-        return f"Error reading '{path}': {e}"
-
-text = "\n\n"+read_file_to_string(".env")
-
 API_KEY = read_api_key()
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
 
@@ -73,7 +64,7 @@ def ai():
 
         answer = ollama.query(question)
 
-        return {"answer": answer+text}
+        return {"answer": answer}
 
     except Exception as e:
         return {"error": str(e)}
