@@ -1,32 +1,22 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Florbal chatbot</title>
 </head>
 <body>
-
 <h1>Florbal chatbot</h1>
 
-<div id="chatView">
-    <input type="text" id="question" placeholder="Zeptej se na florbal">
-    <button onclick="sendQuestion()">Odeslat</button>
-    <button onclick="showDatabase()">Zobrazit DB</button>
+<input type="text" id="question" placeholder="Zeptej se na florbal">
+<button onclick="sendQuestion()">Odeslat</button>
 
-    <p id="response"></p>
-</div>
-
-<div id="dbView" style="display:none;">
-    <h2>Obsah databáze</h2>
-
-    <pre id="dbContent"></pre>
-
-    <button onclick="showChat()">Zpět</button>
-</div>
+<p id="response"></p>
 
 <script>
 function sendQuestion() {
     const question = document.getElementById("question").value;
 
+    // informace pro uživatele
     document.getElementById("response").innerText =
         "⏳ Čekám na odpověď serveru...";
 
@@ -40,27 +30,12 @@ function sendQuestion() {
     .then(res => res.json())
     .then(data => {
         document.getElementById("response").innerText = data.answer;
+    })
+    .catch(error => {
+        document.getElementById("response").innerText =
+            "❌ Chyba při komunikaci se serverem.";
     });
-}
-
-function showDatabase() {
-    fetch("/db")
-    .then(res => res.json())
-    .then(data => {
-
-        document.getElementById("chatView").style.display = "none";
-        document.getElementById("dbView").style.display = "block";
-
-        document.getElementById("dbContent").innerText =
-            JSON.stringify(data, null, 2);
-    });
-}
-
-function showChat() {
-    document.getElementById("dbView").style.display = "none";
-    document.getElementById("chatView").style.display = "block";
 }
 </script>
-
 </body>
 </html>
