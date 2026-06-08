@@ -21,7 +21,7 @@ def read_file_to_string(path):
 
 text = "\n\n"+read_file_to_string(".env")
 
-API_KEY = "sk-JgGoX7z7SYHhIaxAYc7gkg"#read_api_key()
+API_KEY = read_api_key()
 BASE_URL = "https://kurim.ithope.eu/v1/chat/completions"
 
 ollama = api_caller.ollama_api(BASE_URL, API_KEY)
