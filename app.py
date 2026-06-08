@@ -69,6 +69,21 @@ def ai():
     except Exception as e:
         return {"error": str(e)}
 
+
+@app.route("/db")
+def db():
+    conn = get_db_connection()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM test")
+
+    rows = cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return jsonify(rows)
+
 @app.route("/")
 def home():
     return render_template("index.html")
