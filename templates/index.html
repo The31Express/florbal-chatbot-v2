@@ -1,10 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Florbal chatbot</title>
 </head>
 <body>
-
 <h1>Florbal chatbot</h1>
 
 <input type="text" id="question" placeholder="Zeptej se na florbal">
@@ -16,6 +16,10 @@
 function sendQuestion() {
     const question = document.getElementById("question").value;
 
+    // informace pro uživatele
+    document.getElementById("response").innerText =
+        "⏳ Čekám na odpověď serveru...";
+
     fetch("/ai", {
         method: "POST",
         headers: {
@@ -26,9 +30,12 @@ function sendQuestion() {
     .then(res => res.json())
     .then(data => {
         document.getElementById("response").innerText = data.answer;
+    })
+    .catch(error => {
+        document.getElementById("response").innerText =
+            "❌ Chyba při komunikaci se serverem.";
     });
 }
 </script>
-
 </body>
 </html>
