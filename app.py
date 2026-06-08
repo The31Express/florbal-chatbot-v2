@@ -70,19 +70,33 @@ def ai():
         return {"error": str(e)}
 
 
+
 @app.route("/db")
 def db():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM test")
+    cur.execute("""
+        SELECT id, question, answer
+        FROM messages
+        ORDER BY id DESC
+    """)
 
     rows = cur.fetchall()
 
     cur.close()
     conn.close()
 
-    return jsonify(rows)
+    result = []
+
+    for row in rows:
+        result.append({
+            "id": row[0],
+            "question": row[1],
+            "answer": row[2]
+        })
+
+    return jsonify(result)
 
 @app.route("/")
 def home():
